@@ -3,7 +3,7 @@
 
 #include <cstring>
 
-char* KMP(char* pat, char* txt);
+char* KMP(char* txt, char* pat);
 void ComputeLPS(char* pat, int M, char* lps);
 
 #endif

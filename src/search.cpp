@@ -1,10 +1,10 @@
 #include "search.h"
 
-char* KMP(char* pat, char* txt) {
+char* KMP(char* txt, char* pat) {
     int M = strlen(pat);
     int N = strlen(txt);
 
-    char* lps = new char(M);
+    char* lps = new char[M];
 
     ComputeLPS(pat, M, lps);
 
@@ -17,6 +17,7 @@ char* KMP(char* pat, char* txt) {
         }
  
         if (j == M) {
+            delete[] lps;
             return &txt[i - j];
             // printf("Found pattern at index %d ", i - j);
             // j = lps[j - 1];
@@ -28,6 +29,7 @@ char* KMP(char* pat, char* txt) {
             }
         }
     }
+    delete[] lps;
     return nullptr;
 }
 
